@@ -95,7 +95,7 @@ export function autocomplete(data, args) {
   return ['main'] // add any additional branches here if you are working on them
 }
 
-const baseUrl = 'https://raw.githubusercontent.com/jenheilemann/bitburner-scripts/'
+const baseUrl = 'https://raw.githubusercontent.com/ancol-labs/bitburner-scripts/'
 
 /**
  * @param {NS} ns
