@@ -57,11 +57,11 @@ export async function main(ns) {
 
   const cost = ns.getPurchasedServerCost(2**nextRam)
   if ( moneyAvailable < cost * 2 ){
-    ns.print(`INFO: Not enough money to afford the server * 2 + reserve: \$${ns.formatNumber(cost)} * 2 + \$${ns.formatNumber(reserve)} (\$${ns.formatNumber(cost*2 + reserve)})`)
+    ns.print(`INFO: Not enough money to afford the server * 2 + reserve: \$${ns.format.number(cost)} * 2 + \$${ns.format.number(reserve)} (\$${ns.format.number(cost*2 + reserve)})`)
     return
   }
 
-  let msg = `Running pServBuyer.js to purchase ${ns.formatRam(2**nextRam)} (currently: ${ns.formatRam(currRam)}) for \$${ns.formatNumber(cost)}`
+  let msg = `Running pServBuyer.js to purchase ${ns.formatRam(2**nextRam)} (currently: ${ns.formatRam(currRam)}) for \$${ns.format.number(cost)}`
   announce(ns, msg)
   // ns.tprint(msg)
   // ns.tprint(` ns.spawn('pServBuyer.js', 1, '--size', ${nextRam})`)
@@ -90,7 +90,7 @@ function smallestCurrentServerSize(ns, pservs) {
 function nextRamSize(ns, currRam, money) {
   const limit = ns.getPurchasedServerLimit()
   const maxServerSize = ns.getPurchasedServerMaxRam()
-  ns.print(`My money: \$${ns.formatNumber(money)}`)
+  ns.print(`My money: \$${ns.format.number(money)}`)
 
   let cost, totalCost, i
   for (i = 20; (i > 0 && 2**i > currRam); i--) {
@@ -100,7 +100,7 @@ function nextRamSize(ns, currRam, money) {
     cost = ns.getPurchasedServerCost(2**i)
     totalCost = cost * limit
 
-    ns.print(`Total cost for ${2**i}GB ram: ${ns.formatNumber(totalCost, 12)}`)
+    ns.print(`Total cost for ${2**i}GB ram: ${ns.format.number(totalCost, 12)}`)
     if ( cost*2 < money ) {
       ns.print(`(${2**i}) totalCost*2 < myMoney`)
       ns.print(`Returning ${i}`)

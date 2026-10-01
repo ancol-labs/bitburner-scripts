@@ -33,7 +33,7 @@ export async function main(ns) {
   while (true) {
     await ns.sleep(53)
     target = await fetchServer(ns.args[0])
-    ns.print(`Security: ${ns.formatNumber(target.security, 2)}`)
+    ns.print(`Security: ${ns.format.number(target.security, 2)}`)
     if (target.security > securityThreshhold) {
       ns.print("------ Target security: " + securityThreshhold)
       await ns.weaken(target.name)
@@ -42,10 +42,10 @@ export async function main(ns) {
 
     target = await fetchServer(ns.args[0])
     money = target.moneyAvailable
-    ns.print("Current money: $" + ns.formatNumber(money, 2) )
+    ns.print("Current money: $" + ns.format.number(money, 2) )
 
     if (money < moneyThreshhold) {
-      ns.print("------  Target money: " + ns.formatNumber(moneyThreshhold, 2))
+      ns.print("------  Target money: " + ns.format.number(moneyThreshhold, 2))
       threads = numCycleForGrowth(target, maxMoney, ns)
       ns.print(`Calculating ${threads} to grow \$${(moneyThreshhold-money)} from ${target.name} (vs ${scriptThreads})`)
       threads = Math.min(threads, scriptThreads)

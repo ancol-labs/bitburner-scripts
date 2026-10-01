@@ -16,9 +16,9 @@ export async function main(ns) {
   var serverData = fetchServerFree('home')
   var ram = serverData.maxRam
   var cost = Math.ceil(ram * 3.2 * mult * Math.pow(10,4) * Math.pow(1.58, Math.log2(ram)))
-  ns.print("Cost: $" + ns.formatNumber(cost, 3))
+  ns.print("Cost: $" + ns.format.number(cost, 3))
   var player = fetchPlayer()
-  ns.print("Player money: $" + ns.formatNumber(player.money, 3))
+  ns.print("Player money: $" + ns.format.number(player.money, 3))
   let res = ram < 32 ? 0 : reserve(ns)
 
   if ((player.money - res) < cost) {

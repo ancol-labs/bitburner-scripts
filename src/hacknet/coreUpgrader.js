@@ -6,7 +6,7 @@ function upgradeCores(ns, node, id, cores) {
     return;
   }
   let cost = ns.hacknet.getCoreUpgradeCost(id, 1)
-  ns.print('Upgrading core, costs $' + ns.formatNumber(cost))
+  ns.print('Upgrading core, costs $' + ns.format.number(cost))
   if (haveEnoughMoney(ns, cost)) {
     ns.hacknet.upgradeCore(id, 1)
     return true

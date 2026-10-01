@@ -49,10 +49,10 @@ export async function main(ns) {
 function printServer(ns, server, batches) {
   ns.print(` ----------- ${server.hostname}`)
   let percent = Math.round((server.moneyAvailable / server.moneyMax) * 100)
-  ns.print(`*** Money    : \$${ns.formatNumber(server.moneyAvailable,0)} / \$${ns.formatNumber(server.moneyMax,0)} (${(percent)}%)`)
+  ns.print(`*** Money    : \$${ns.format.number(server.moneyAvailable,0)} / \$${ns.format.number(server.moneyMax,0)} (${(percent)}%)`)
   let weakTime = ns.getWeakenTime(server.hostname)
   ns.print(`*** Growth   : ${server.serverGrowth.toString().padStart(3)} | ` +
-            `Security : ${ns.formatNumber(server.hackDifficulty, 1)}/${ns.formatNumber(server.minDifficulty, 0)}`)
+            `Security : ${ns.format.number(server.hackDifficulty, 1)}/${ns.format.number(server.minDifficulty, 0)}`)
   let numBatches = batches.filter(b=>b.target == server.hostname).length
   ns.print(`*** Batches  : ${numBatches.toString().padStart(3)} | ` +
             `Time : ${formatDuration(weakTime)}`)

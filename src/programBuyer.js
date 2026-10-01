@@ -16,13 +16,13 @@ export async function main(ns) {
     ns.print('Program buyer quit unexpectedly')
     ns.print('Program: ', program)
     ns.print('player.tor: ', player.tor)
-    ns.print('player.money: $', ns.formatNumber(player.money)," > ",
-      ' program.cost $', ns.formatNumber(program.cost), " ? ",
+    ns.print('player.money: $', ns.format.number(player.money)," > ",
+      ' program.cost $', ns.format.number(program.cost), " ? ",
       player.money >= program.cost)
     return
   }
 
-  ns.tprint(`Buying ${program.name} for \$${ns.formatNumber(program.cost)}`)
+  ns.tprint(`Buying ${program.name} for \$${ns.format.number(program.cost)}`)
   let result = await fetch(ns, `ns.singularity.purchaseProgram('${program.name}')`,
     '/Temp/purchaseProgram.txt')
   if ( result ) {

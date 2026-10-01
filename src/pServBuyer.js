@@ -25,7 +25,7 @@ export async function main(ns) {
     `/Temp/getPurchasedServerLimit.txt`)
   const cost = await fetch(ns, `ns.getPurchasedServerCost(${ram})`,
     `/Temp/getPurchasedServerCost.${args.size}.txt`)
-  ns.print(`Buying ${limit} ${ram}GB servers for ${ns.formatNumber(cost)} each`)
+  ns.print(`Buying ${limit} ${ram}GB servers for ${ns.format.number(cost)} each`)
   let count = 0
 
   let hostname
@@ -47,7 +47,7 @@ export async function main(ns) {
 async function buyNewOrReplaceServer(ns, hostname, cost, ram) {
   if (!ns.serverExists(hostname)) {
     ns.print(`Buying a new server ${hostname} with ${ram} GB ram for ` +
-      `${ns.formatNumber(cost)}`)
+      `${ns.format.number(cost)}`)
     return purchaseNewServer(ns, hostname, ram)
   }
   let host = await fetch(ns, `ns.getServer('${hostname}')`)
@@ -58,7 +58,7 @@ async function buyNewOrReplaceServer(ns, hostname, cost, ram) {
   }
 
   ns.print(`Upgrading ${hostname} with ${host.maxRam} -> ${ram} GB ram` +
-    ` for \$${ns.formatNumber(cost)}`)
+    ` for \$${ns.format.number(cost)}`)
   return await upgradeServer(ns, host, ram)
 }
 

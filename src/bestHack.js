@@ -117,8 +117,8 @@ export async function main(ns) {
   for (let s of top) {
     ns.print(" | ",
       s.name.padEnd(18),
-      `\$${ns.formatNumber(s.moneyMax,2).padStart(10)}`,
-      ns.formatNumber(calcScore(s),2).padStart(14),
+      `\$${ns.format.number(s.moneyMax,2).padStart(10)}`,
+      ns.format.number(calcScore(s),2).padStart(14),
       formatDuration(weakTime(s)).padStart(13),
       formatRam((new HackBuilder(s).calcTotalRamRequired())).padStart(13)
     )

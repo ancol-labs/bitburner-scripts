@@ -66,10 +66,10 @@ export function myMoney() {
  */
 export function haveEnoughMoney(ns, cost) {
   if ((myMoney() - reserve(ns)) >= cost) {
-    ns.print("I have enough: $" + ns.formatNumber(cost))
+    ns.print("I have enough: $" + ns.format.number(cost))
     return true;
   }
-  ns.print("Don't have enough: $" + ns.formatNumber(cost + reserve(ns)))
+  ns.print("Don't have enough: $" + ns.format.number(cost + reserve(ns)))
   return false;
 }
 
